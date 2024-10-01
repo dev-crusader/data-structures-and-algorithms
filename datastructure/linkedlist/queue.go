@@ -7,7 +7,7 @@ Each node has a 'value' that stores the integer, and pointer to its next and pre
  AddToEnd and RemoveFromFront method is also added as a part of doubly linkedlist
 */
 
-package datastructure
+package linkedlist
 
 import "fmt"
 
@@ -21,30 +21,7 @@ type Node struct {
 	value      int
 }
 
-func (a *Queue) Push2(v int) {
-	if a.tail == nil {
-		a.tail = &Node{
-			value: v,
-		}
-		a.head = a.tail
-	} else if a.head == a.tail {
-		a.head = &Node{
-			value: v,
-		}
-		a.head.next = a.tail
-		a.tail.prev = a.head
-	} else {
-		temp := a.head
-		a.head = &Node{
-			value: v,
-		}
-		a.head.next = temp
-		temp.prev = a.head
-	}
-	a.size++
-}
-
-//Push method add element to the front of Queue
+// Push method add element to the front of Queue
 func (a *Queue) Push(v int) {
 	node := &Node{value: v}
 	if a.head == nil {

@@ -1,4 +1,4 @@
-package testproj
+package workshop
 
 import (
 	"container/list"

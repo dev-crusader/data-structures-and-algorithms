@@ -1,11 +1,11 @@
-package datastructure
+package hashmap
 
 import "fmt"
 
 const Size = 10
 
 type HashMap struct {
-	ArrayMap [Size]*LinkListed
+	buckets [Size]*LinkListed
 }
 
 type LinkListed struct {
@@ -13,30 +13,31 @@ type LinkListed struct {
 }
 
 type ListNode struct {
-	data string
-	next *ListNode
+	key   string
+	value any
+	next  *ListNode
 }
 
 // Insert function implements insertion of key to hashMap
-func (h *HashMap) Insert(key string) {
+func (h *HashMap) Insert(key string, value any) {
 	index := generateHash(key)
-	h.ArrayMap[index].Insert(key)
+	h.buckets[index].Insert(key, value)
 }
 
 func (h *HashMap) Delete(key string) {
 	index := generateHash(key)
-	h.ArrayMap[index].Delete(key)
+	h.buckets[index].Delete(key)
 }
 
 func (h *HashMap) Search(key string) bool {
 	searchIndex := generateHash(key)
-	return h.ArrayMap[searchIndex].Search(key)
+	return h.buckets[searchIndex].Search(key)
 }
 
 // Insert function insert the key into Linkedlist
-func (l *LinkListed) Insert(key string) {
+func (l *LinkListed) Insert(key string, value any) {
 	if !l.Search(key) {
-		currentNode := &ListNode{data: key}
+		currentNode := &ListNode{key: key, value: value}
 		currentNode.next = l.head
 		l.head = currentNode
 	} else {
@@ -47,13 +48,13 @@ func (l *LinkListed) Insert(key string) {
 func (l *LinkListed) Delete(key string) {
 	currentNode := l.head
 
-	if currentNode.data == key {
+	if currentNode.key == key {
 		l.head = currentNode.next
 		return
 	}
 
 	for currentNode.next != nil {
-		if currentNode.next.data == key {
+		if currentNode.next.key == key {
 			currentNode.next = currentNode.next.next
 			return
 		}
@@ -65,7 +66,7 @@ func (l *LinkListed) Delete(key string) {
 func (l *LinkListed) Search(key string) bool {
 	currentNode := l.head
 	for currentNode != nil {
-		if currentNode.data == key {
+		if currentNode.key == key {
 			return true
 		}
 		currentNode = currentNode.next
@@ -75,8 +76,8 @@ func (l *LinkListed) Search(key string) bool {
 
 func initMap() *HashMap {
 	hm := &HashMap{}
-	for k := range hm.ArrayMap {
-		hm.ArrayMap[k] = &LinkListed{}
+	for k := range hm.buckets {
+		hm.buckets[k] = &LinkListed{}
 	}
 	return hm
 }
@@ -91,17 +92,19 @@ func generateHash(key string) int {
 
 func InitHashMap() {
 	m := initMap()
-	fmt.Println(m)
-	m.Insert("Jack")
-	m.Insert("Pete")
-	m.Insert("Ryan")
-	m.Insert("Kyle")
-	m.Insert("Stuart")
-	m.Insert("John")
-	m.Insert("Jim")
-	m.Insert("Bard")
-	m.Insert("Kate")
+	m.Insert("Jack", 32)
+	m.Insert("Pete", 44)
+	m.Insert("Ryan", 76)
+	m.Insert("Kyle", 675)
+	m.Insert("Stuart", 354)
+	m.Insert("John", "Parkers")
+	m.Insert("Jim", "Kimmel")
+	m.Insert("Bard", "AI")
+	m.Insert("Kate", struct {
+		age      int
+		location string
+	}{26, "Dallas"})
 	fmt.Println(m.Search("Jack"))
-	m.Delete("Kate")
-	m.Insert("Jill")
+	m.Delete("Bard")
+	m.Insert("Jill", "Cody")
 }

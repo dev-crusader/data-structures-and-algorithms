@@ -31,7 +31,7 @@ func main() {
 	// lc.Run()
 	gen.GenericMap()
 	hm.InitHashMap()
-	cp.FanInFanOut()
+	cp.Pipeline()
 	// gen.GenerateList()
 	// it.RunIterator()
 }

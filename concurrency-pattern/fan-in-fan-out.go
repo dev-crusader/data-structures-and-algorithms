@@ -5,43 +5,31 @@ import (
 	"sync"
 )
 
-// Worker function that processes input numbers
-func worker(id int, jobs <-chan int, results chan<- int, wg *sync.WaitGroup) {
+// Worker function that processes a task
+func workerRoutine(task int, results chan<- int, wg *sync.WaitGroup) {
 	defer wg.Done()
-	for job := range jobs {
-		// Simulate some work
-		result := job * job // Example processing (squaring the number)
-		fmt.Printf("Worker %d processed job %d; result = %d\n", id, job, result)
-		results <- result
-	}
+	fmt.Printf("Processed task: %d\n", task)
+	results <- task * 2 // Send the processed result to the results channel
 }
 
 func FanInFanOut() {
-	const numJobs = 10
-	const numWorkers = 3
-
-	jobs := make(chan int, numJobs)
-	results := make(chan int, numJobs)
-
 	var wg sync.WaitGroup
+	tasks := []int{1, 2, 3, 4, 5}         // Example tasks (each task is just an int)
+	results := make(chan int, len(tasks)) // Buffered channel for results
 
-	// Start worker goroutines (fan-out)
-	for w := 1; w <= numWorkers; w++ {
+	// Fan-out: Create a new goroutine for each task
+	for _, task := range tasks {
 		wg.Add(1)
-		go worker(w, jobs, results, &wg)
+		go workerRoutine(task, results, &wg)
 	}
 
-	// Send jobs to the jobs channel
-	for j := 1; j <= numJobs; j++ {
-		jobs <- j
-	}
-	close(jobs) // Close jobs channel as no more jobs will be sent
+	// Fan-in: Wait for all workers to finish and then close the results channel
+	go func() {
+		wg.Wait()
+		close(results)
+	}()
 
-	// Wait for all workers to finish
-	wg.Wait()
-	close(results) // Close results channel after workers finish
-
-	// Collect results
+	// Collect and print the results
 	for result := range results {
 		fmt.Printf("Collected result: %d\n", result)
 	}

@@ -6,8 +6,6 @@ import (
 	// bst "github.com/dev-crusader404/data-structures-and-algorithms/datastructure/binarytree"
 	// tp "github.com/dev-crusader404/data-structures-and-algorithms/datastructure/test-proj"
 	// gh "github.com/dev-crusader404/data-structures-and-algorithms/datastructure/graph"
-	gen "github.com/dev-crusader404/data-structures-and-algorithms/datastructure/generics"
-	hm "github.com/dev-crusader404/data-structures-and-algorithms/datastructure/hashmap"
 
 	// srt "github.com/dev-crusader404/data-structures-and-algorithms/datastructure/sort"
 
@@ -29,9 +27,10 @@ func main() {
 	// bst.BST()
 	// gh.InitGraph()
 	// lc.Run()
-	gen.GenericMap()
-	hm.InitHashMap()
-	cp.Pipeline()
+	// gen.GenericMap()
+	// hm.InitHashMap()
+	cp.FanInFanOut()
+	cp.WorkerPool()
 	// gen.GenerateList()
 	// it.RunIterator()
 }

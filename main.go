@@ -8,14 +8,17 @@ import (
 	// gh "github.com/dev-crusader404/data-structures-and-algorithms/datastructure/graph"
 	gen "github.com/dev-crusader404/data-structures-and-algorithms/datastructure/generics"
 	hm "github.com/dev-crusader404/data-structures-and-algorithms/datastructure/hashmap"
-	srt "github.com/dev-crusader404/data-structures-and-algorithms/datastructure/sort"
+
+	// srt "github.com/dev-crusader404/data-structures-and-algorithms/datastructure/sort"
+
 	// it "github.com/dev-crusader404/data-structures-and-algorithms/datastructure/iterator"
+	cp "github.com/dev-crusader404/data-structures-and-algorithms/concurrency-pattern"
 )
 
 func main() {
 	fmt.Println("Data Structures and Algorithms")
 
-	srt.SortWithMerge()
+	// srt.SortWithMerge()
 	// ds.BST()
 	// ds.InitHashMap()
 	// ds.CallHeap()
@@ -28,6 +31,7 @@ func main() {
 	// lc.Run()
 	gen.GenericMap()
 	hm.InitHashMap()
+	cp.FanInFanOut()
 	// gen.GenerateList()
 	// it.RunIterator()
 }

@@ -29,8 +29,8 @@ func main() {
 	// lc.Run()
 	// gen.GenericMap()
 	// hm.InitHashMap()
-	cp.FanInFanOut()
-	cp.WorkerPool()
+	// cp.FanInFanOut()
+	cp.SemaphorePattern()
 	// gen.GenerateList()
 	// it.RunIterator()
 }

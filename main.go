@@ -30,7 +30,7 @@ func main() {
 	// gen.GenericMap()
 	// hm.InitHashMap()
 	// cp.FanInFanOut()
-	cp.SemaphorePattern()
+	cp.Barrier()
 	// gen.GenerateList()
 	// it.RunIterator()
 }

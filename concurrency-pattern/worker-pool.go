@@ -16,7 +16,7 @@ func worker(id int, jobs <-chan int, results chan<- int, wg *sync.WaitGroup) {
 	}
 }
 
-func WorkerPool() {
+func RunWorkerPool() {
 	const numJobs = 10
 	const numWorkers = 3
 

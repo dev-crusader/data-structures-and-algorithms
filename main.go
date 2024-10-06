@@ -30,7 +30,7 @@ func main() {
 	// gen.GenericMap()
 	// hm.InitHashMap()
 	// cp.FanInFanOut()
-	cp.Barrier()
+	cp.DynamicWorkerPool()
 	// gen.GenerateList()
 	// it.RunIterator()
 }

@@ -1,4 +1,4 @@
-module github.com/dev-crusader404/data-structures-and-algorithms
+module github.com/dev-crusader/data-structures-and-algorithms
 
 go 1.22.7
 

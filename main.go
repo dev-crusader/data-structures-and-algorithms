@@ -2,15 +2,15 @@ package main
 
 import (
 	"fmt"
-	// ds "github.com/dev-crusader404/data-structures-and-algorithms/datastructure"
-	// bst "github.com/dev-crusader404/data-structures-and-algorithms/datastructure/binarytree"
-	// tp "github.com/dev-crusader404/data-structures-and-algorithms/datastructure/test-proj"
-	// gh "github.com/dev-crusader404/data-structures-and-algorithms/datastructure/graph"
 
-	// srt "github.com/dev-crusader404/data-structures-and-algorithms/datastructure/sort"
+	// bst "github.com/dev-crusader/data-structures-and-algorithms/datastructure/binarytree"
+	// tp "github.com/dev-crusader/data-structures-and-algorithms/datastructure/test-proj"
+	// gh "github.com/dev-crusader/data-structures-and-algorithms/datastructure/graph"
 
-	// it "github.com/dev-crusader404/data-structures-and-algorithms/datastructure/iterator"
-	cp "github.com/dev-crusader404/data-structures-and-algorithms/concurrency-pattern"
+	// srt "github.com/dev-crusader/data-structures-and-algorithms/datastructure/sort"
+
+	// it "github.com/dev-crusader/data-structures-and-algorithms/datastructure/iterator"
+	cp "github.com/dev-crusader/data-structures-and-algorithms/concurrency-pattern"
 )
 
 func main() {
@@ -30,7 +30,8 @@ func main() {
 	// gen.GenericMap()
 	// hm.InitHashMap()
 	// cp.FanInFanOut()
-	cp.DynamicWorkerPool()
+	cp.Pipeline()
+	// cp.DynamicWorkerPool()
 	// gen.GenerateList()
 	// it.RunIterator()
 }
